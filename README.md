@@ -1,14 +1,10 @@
 # delta-hedging-simulator
 
-Here’s a detailed and jargon-accurate README.md for your Delta Hedging Simulator project, ideal for GitHub:
-
-⸻
-
-📈 Delta Hedging Simulator
+Delta Hedging Simulator
 
 This project implements a Delta Hedging simulation using historical price data for a listed security (e.g., AAPL) and models the P&L of a dynamically hedged options portfolio over time. It applies quantitative finance concepts like the Black-Scholes model, Greeks, and discrete rebalancing under realistic conditions (e.g., transaction costs, finite hedging frequency).
 
-🧠 Core Concepts
+Core Concepts
 	•	Delta Hedging: A strategy that neutralizes directional risk by taking offsetting positions in the underlying asset and its derivative (option), based on the option’s delta.
 	•	Black-Scholes Pricing: Closed-form pricing of European options assuming log-normal asset returns, continuous trading, and constant volatility.
 	•	Historical Volatility Estimation: Realized volatility is estimated from log returns of adjusted close prices, annualized using √252 scaling.
@@ -16,7 +12,7 @@ This project implements a Delta Hedging simulation using historical price data f
 
 ⸻
 
-🚀 Features
+Features
 	•	Real Data Simulation: Pulls real stock data via yfinance, normalizes the path to [0, 1] time scale.
 	•	Delta Rebalancing: Implements discrete hedging intervals (every n steps) with cash and asset position updates.
 	•	Transaction Costs: Models proportional costs (default: 0.1%) per trade to reflect realistic execution slippage.
@@ -29,7 +25,7 @@ This project implements a Delta Hedging simulation using historical price data f
 
 ⸻
 
-📊 Example Output
+Example Output
 
 Figure: Delta-Hedged Portfolio Value Over Time
 
@@ -37,33 +33,21 @@ Figure: Delta Evolution Across Time
 
 ⸻
 
-⚙️ How It Works
+How It Works
 
-# Load historical price data (auto-adjusted)
+Load historical price data (auto-adjusted)
 data = yf.download("AAPL", start="2024-01-01", end="2024-12-31", auto_adjust=True)
 
-# Estimate annualized historical volatility
+Estimate annualized historical volatility
 sigma = np.std(np.log(data['Close'] / data['Close'].shift(1))) * np.sqrt(252)
 
-# Normalize price path to 0–1 scale and simulate
+Normalize price path to 0–1 scale and simulate
 path = normalize_price_series(data['Close'])
 portfolio, deltas = simulate_delta_hedging(path, K=S0, r=0.0443, sigma=sigma)
 
 
-⸻
 
-📁 Project Structure
-
-📦 delta-hedging-simulator
-├── real_simulator.py     # Main simulation logic
-├── utils.py              # Optional helper functions
-├── README.md             # Project documentation
-└── sample_outputs/       # Generated plots
-
-
-⸻
-
-🧪 Future Improvements
+Future Improvements
 	•	Incorporate gamma risk and higher-order Greeks
 	•	Model stochastic volatility (e.g., using GARCH or SABR models)
 	•	Add multi-asset support or portfolio-level hedging
@@ -71,14 +55,14 @@ portfolio, deltas = simulate_delta_hedging(path, K=S0, r=0.0443, sigma=sigma)
 
 ⸻
 
-📚 References
+References
 	•	Hull, J. (2022). Options, Futures, and Other Derivatives
 	•	Black, F., & Scholes, M. (1973). The Pricing of Options and Corporate Liabilities
 	•	Wilmott, P. (2006). Paul Wilmott Introduces Quantitative Finance
 
 ⸻
 
-💻 Requirements
+Requirements
 
 pip install numpy pandas matplotlib yfinance scipy
 
@@ -89,11 +73,3 @@ pip install numpy pandas matplotlib yfinance scipy
 
 MIT License. Feel free to fork, extend, and contribute!
 
-⸻
-
-Let me know if you want to:
-	•	Add mathematical derivations in LaTeX
-	•	Include multiple ticker support in CLI
-	•	Turn this into a Streamlit dashboard for visualization
-
-I can update the README accordingly.
