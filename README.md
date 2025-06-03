@@ -1,4 +1,4 @@
-# delta-hedging-simulator
+# Delta-Hedging-Simulator
 
 Delta Hedging Simulator
 
