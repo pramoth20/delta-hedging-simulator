@@ -56,33 +56,32 @@ portfolio, deltas = simulate_delta_hedging(path, K=S0, r=0.0443, sigma=sigma)
 
 The **Black-Scholes formula** calculates the fair value of a European call option:
 
-$begin:math:display$
-C = S \\cdot N(d_1) - K \\cdot e^{-rT} \\cdot N(d_2)
-$end:math:display$
+\[
+C = S \cdot N(d_1) - K \cdot e^{-rT} \cdot N(d_2)
+\]
 
 Where:
 
-- $begin:math:text$ C $end:math:text$ = Call option price  
-- $begin:math:text$ S $end:math:text$ = Current stock price  
-- $begin:math:text$ K $end:math:text$ = Strike price  
-- $begin:math:text$ T $end:math:text$ = Time to maturity (in years)  
-- $begin:math:text$ r $end:math:text$ = Risk-free interest rate  
-- $begin:math:text$ \\sigma $end:math:text$ = Volatility of the underlying asset  
-- $begin:math:text$ N(d) $end:math:text$ = Cumulative distribution function of the standard normal distribution  
+- \( C \): Call option price  
+- \( S \): Current stock price  
+- \( K \): Strike price  
+- \( T \): Time to maturity (in years)  
+- \( r \): Risk-free interest rate  
+- \( \sigma \): Volatility of the underlying asset  
+- \( N(d) \): Cumulative distribution function of the standard normal distribution  
 
-$begin:math:display$
-d_1 = \\frac{\\ln(S / K) + (r + \\frac{1}{2}\\sigma^2)T}{\\sigma \\sqrt{T}}, \\quad
-d_2 = d_1 - \\sigma \\sqrt{T}
-$end:math:display$
+\[
+d_1 = \frac{\ln(S / K) + (r + \frac{1}{2}\sigma^2)T}{\sigma \sqrt{T}}, \quad
+d_2 = d_1 - \sigma \sqrt{T}
+\]
 
-**Delta**, the sensitivity of the option price to the stock price, is simply:
+**Delta**, the sensitivity of the option price to the stock price, is:
 
-$begin:math:display$
-\\Delta = N(d_1)
-$end:math:display$
+\[
+\Delta = N(d_1)
+\]
 
-Delta increases toward 1.0 as the option becomes deep in-the-money near expiration.
-
+Delta approaches 1.0 as the option becomes deep in-the-money near expiration.
 ---
 
 ##  Future Improvements
